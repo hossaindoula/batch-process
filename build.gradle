@@ -1,0 +1,28 @@
+group 'info.doula'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.8
+
+jar {
+    baseName = 'batch-process'
+    version =  '0.0.1'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url "http://repo.spring.io/libs-release" }
+    maven { url "http://repo.maven.apache.org/maven2" }
+}
+
+dependencies {
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-batch', version:'1.4.3.RELEASE'
+    compile group: 'com.h2database', name: 'h2', version:'1.4.193'
+    testCompile(group: 'org.springframework.boot', name: 'spring-boot-starter-test', version:'1.4.3.RELEASE') {
+        exclude(module: 'commons-logging')
+    }
+    testCompile group: 'org.springframework.batch', name: 'spring-batch-test', version:'3.0.7.RELEASE'
+}
